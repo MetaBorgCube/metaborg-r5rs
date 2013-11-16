@@ -1,0 +1,107 @@
+
+module R5RS.generated
+
+completions
+  
+
+completions
+  completion template Boolean : "#t" =
+    "#t"  
+  completion template Boolean : "#f" =
+    "#f"  
+
+completions
+  
+
+completions
+  
+
+completions
+  completion template Datum : "()" =
+    "(" <:Datum> ")"  
+  completion template Datum : "(Datum .: Datum)" =
+    "(" <Datum:Datum> " .: " <Datum:Datum> ")"  
+  completion template Abbreviation : "AbbrevPrefixDatum" =
+    <AbbrevPrefix:AbbrevPrefix> <Datum:Datum>  
+  completion template AbbrevPrefix : "`" =
+    "`"  
+  completion template AbbrevPrefix : "," =
+    ","  
+  completion template AbbrevPrefix : ",@" =
+    ",@"  
+  completion template Datum : "#()" =
+    "#(" <:Datum> ")"  
+
+completions
+  
+
+completions
+  completion template Expression : "Quote Datum" =
+    <Quote:Quote> " " <Datum:Datum>                            
+  completion template Expression : "(quote Datum)" =
+    "(quote " <Datum:Datum> ")"                              
+  completion template Expression : "(Expression )" =
+    "(" <Expression:Expression> " " <:Expression> ")"        
+  completion template Expression : "(lambda Formals Body)" =
+    "(lambda " <Formals:Formals> " " <Body:Body> ")"  
+  completion template Formals : "()" =
+    "(" <:Formal> ")"                                                      
+  completion template Body : " Sequence" =
+    <:Definition> " " <Sequence:Sequence>                              
+  completion template Sequence : " Expression" =
+    <:Command> " " <Expression:Expression>                       
+  completion template Expression : "(if Expression Expression )" =
+    "(if " <Expression:Expression> " " <Expression:Expression> " " <:Expression> ")"  
+  completion template Expression : "(set! Variable Expression)" =
+    "(set! " <Variable:Variable> " " <Expression:Expression> ")"  
+  completion template Expression : "(cond CondClause)" =
+    "(cond " <CondClause:CondClause> ")"                 
+  completion template Expression : "(cond CondClause (else Sequence))" =
+    "(cond " <CondClause:CondClause> " (else " <Sequence:Sequence> "))"  
+  completion template CondClause : "(Expression Sequence)" =
+    "(" <Expression:Expression> " " <Sequence:Sequence> ")"  
+  completion template CondClause : "(Expression)" =
+    "(" <Expression:Expression> ")"                           
+  completion template CondClause : "(Expression => Expression)" =
+    "(" <Expression:Expression> " => " <Expression:Expression> ")"  
+  completion template Expression : "(case Expression CaseClause)" =
+    "(case " <Expression:Expression> "\n\t\t\t " <CaseClause:CaseClause> ")" (blank)  
+  completion template Expression : "(case Expression (else Sequence))" =
+    "(case " <Expression:Expression> "\n\t\t\t " (cursor) "\n\t\t\t (else " <Sequence:Sequence> "))" (blank)  
+  completion template CaseClause : "(() Sequence)" =
+    "((" <:Datum> ") " <Sequence:Sequence> ")"               
+  completion template Expression : "(and )" =
+    "(and " <:Expression> ")"                                       
+  completion template Expression : "(or )" =
+    "(or " <:Expression> ")"                                         
+  completion template Expression : "(let () Body)" =
+    "(let (" <:BindingSpec> ") " <Body:Body> ")"             
+  completion template Expression : "(LetKW Variable () Body)" =
+    "(" <LetKW:LetKW> " " <Variable:Variable> " (" <:BindingSpec> ") " <Body:Body> ")"  
+  completion template BindingSpec : "(Bind Expression)" =
+    "(" <Bind:Bind> " " <Expression:Expression> ")"     
+  completion template Expression : "letrec () Body" =
+    "letrec (" <:BindingSpec> ") " <Body:Body>              
+  completion template Expression : "(begin Sequence)" =
+    "(begin " <Sequence:Sequence> ")"                     
+  completion template Expression : "(do () (Expression ) )" =
+    "(do (" <:IterationSpec> ")\n\t\t(" <Expression:Expression> " " <:Sequence> ")\n\t\t" <:Command> ")" (blank)  
+  completion template IterationSpec : "(Variable Expression Expression)" =
+    "(" <Variable:Variable> " " <Expression:Expression> " " <Expression:Expression> ")"  
+  completion template IterationSpec : "(Variable Expression)" =
+    "(" <Variable:Variable> " " <Expression:Expression> ")"  
+  completion template Expression : "(delay Expression)" =
+    "(delay " <Expression:Expression> ")"               
+
+completions
+  
+
+completions
+  completion template CommandOrDefinition : "(begin )" =
+    "(begin " <:CommandOrDefinition> ")"  
+  completion template Definition : "(define Variable Expression)" =
+    "(define " <Variable:Variable> " " <Expression:Expression> ")"  
+  completion template Definition : "(define (Variable DefFormals) Body)" =
+    "(define (" <Variable:Variable> " " <DefFormals:DefFormals> ") " <Body:Body> ")"  
+  completion template Definition : "(begin )" =
+    "(begin " <:Definition> ")"       

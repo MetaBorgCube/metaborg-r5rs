@@ -1,0 +1,22 @@
+module R5RS-Syntax
+
+//imports R5RS-Syntax.generated
+
+language
+                                                                   
+  // This file can be used for custom syntax rules.                
+  //                                                               
+  // See the imported file for a brief introduction and examples.  
+  
+  // Comment constructs:                   
+  line comment                           : ";"
+  //block comment                          : "/*" * "*/"
+  
+  // Fences (used for matching,            
+  // inserting, indenting brackets):       
+  fences                                 : [ ]
+                                           ( )
+                                           { }
+                                                                                    
+  // Regular expression for identifiers:   
+  identifier lexical                     : "[A-Za-z0-9_]+"

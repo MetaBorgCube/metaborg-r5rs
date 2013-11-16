@@ -1,0 +1,29 @@
+module R5RS.main
+
+imports
+  R5RS-Menus
+  R5RS-Refactorings
+  R5RS-Colorer
+  R5RS-Completions
+  R5RS-Folding
+  R5RS-References
+  R5RS-Syntax
+
+language General properties
+  
+  name:    R5RS
+  id:  R5RS
+  extends: Root
+  
+  description: "Spoofax-generated editor for the R5RS language"
+  url: http://strategoxt.org
+  
+  extensions: scm
+  table:  include/R5RS.tbl
+  start symbols: Program
+  
+  provider: include/r5rs.ctree
+  //provider: include/r5rs-java.jar
+  observer: editor-analyze (multifile)
+  
+  on save : editor-save

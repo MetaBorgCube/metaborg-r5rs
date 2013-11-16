@@ -1,0 +1,11 @@
+module editor/R5RS-Outliner
+
+imports
+  include/R5RS
+  lib/runtime/editor/outline-library
+  lib/runtime/editor/origins
+  editor/R5RS-Outliner.generated
+
+rules
+  
+  outline-expand-to-level = !3

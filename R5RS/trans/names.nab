@@ -1,0 +1,29 @@
+module names
+
+imports include/R5RS
+	
+namespaces Variable
+	
+binding rules
+
+  Program(_) :
+    scopes Variable
+
+  VarDef(name, _) :
+    defines Variable name
+       
+  Formal(name) : 
+    defines Variable name
+    
+  VarRef(name) :
+    refers to Variable name
+    
+  Bind(name) :
+    defines Variable name
+
+  Lambda(_, _) : 
+    scopes Variable
+     
+  Let(_, _) :
+    scopes Variable
+    

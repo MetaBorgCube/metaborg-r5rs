@@ -1,0 +1,52 @@
+module Common
+
+lexical syntax
+
+	~[\.0-9\ \t\n\(\)](~[\ \t\n\(\)])+ -> ID
+	
+lexical restrictions
+
+  ID -/- ~[\ \t\n\(\)]
+  
+lexical syntax
+
+	"-"? [0-9]+          -> INT
+	
+	"\"" StringChar* "\"" -> STRING
+	~[\"\n]               -> StringChar
+	"\\\""                -> StringChar
+	BackSlashChar         -> StringChar
+	"\\"                  -> BackSlashChar
+	
+	[\ \t\n\r] -> LAYOUT
+	
+	[\*]                             -> CommentChar
+	"/*" (~[\*] | CommentChar)* "*/" -> LAYOUT
+	//"//" ~[\n\r]* ([\n\r] | EOF)     -> LAYOUT
+  "//" ~[\n\r]* [\n\r]      -> LAYOUT
+	
+	-> EOF
+
+lexical restrictions
+
+	// Ensure greedy matching for lexicals
+	
+	CommentChar   -/- [\/]
+	INT           -/- [0-9]
+	
+	// EOF may not be followed by any char
+	
+	EOF           -/- ~[]
+	
+	// Backslash chars in strings may not be followed by " 
+	
+	BackSlashChar -/- [\"]
+
+context-free restrictions
+
+	// Ensure greedy matching for comments
+	
+	LAYOUT? -/- [\ \t\n\r]
+	LAYOUT? -/- [\/].[\/]
+	LAYOUT? -/- [\/].[\*]
+
